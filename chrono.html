@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <input type="button" value="Start">
+    <div id="chrono"></div>
+
+    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.4.1.min.js"></script>
+    <script>
+        var chronometre = {
+            millisecondes : 0,
+            secondes : 0,
+            minutes : 0,
+            heures : 0,
+
+            init(){
+                this.millisecondes = 0;
+                this.secondes = 0;
+                this.minutes = 0;
+                this.heures = 0;
+            },
+
+            diplay(){
+                console.log(this.millisecondes);
+                console.log($('#chrono'));
+                $('#chrono').text('ici '+this.millisecondes);
+            },
+
+            start(){
+                var x = setInterval(() => {
+                    this.millisecondes++;
+                    this.diplay();
+                    if(this.millisecondes == 50)
+                        clearInterval(x);
+                }, 100);
+
+            }
+        };
+    </script>
+    <script>        
+        $(document).ready(function(){
+            chronometre.init();
+            chronometre.start();
+        });
+    </script>
+</body>
+</html>
